@@ -26,11 +26,6 @@ namespace PersonalClock.Views
             DateLabel.Text = System.DateTime.Now.ToString("dd/MMM/yyyy | dddd");
         }
 
-        #region Menu
-        private void salirToolStripMenuItem_Click_1(object sender, EventArgs e)
-        { ExitApp(); }
-        #endregion
-
         #region Detallitos
         private void HourUserControl_Load(object sender, EventArgs e)
         {
@@ -53,32 +48,6 @@ namespace PersonalClock.Views
                 DetailDotLabel2.Visible = DotLabelBool;
             }
             #endregion
-        }
-        #endregion
-
-        private void ExitApp()
-        {
-            DialogResult Dialog = MessageBox.Show("¿Está seguro que desea salir de la aplicación?",
-                "!Está saliendo la app¡",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning,
-                MessageBoxDefaultButton.Button2);
-
-            if (Dialog == DialogResult.Yes)
-                Application.Exit();
-        }
-
-
-        #region Animación Opacidad
-        private void opacidadDeVentanaToolStripMenuItem_Click(object sender, EventArgs e)
-        { AnimTimer.Enabled = true; }
-
-        private void AnimTimer_Tick(object sender, EventArgs e)
-        {
-            if (Size.Width == )
-            {
-
-            }
         }
         #endregion
     }

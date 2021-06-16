@@ -39,18 +39,6 @@ namespace PersonalClock.Views
             this.Form_drag = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Form_drag2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.TooltipConfig = new System.Windows.Forms.ToolTip(this.components);
-            this.MenuContext = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.configuracionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.opacidadDeVentanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.siempreAlFrenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.siToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.noToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reiniciarDatosDeFabricaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.datosDeFabricaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AnimTimer = new System.Windows.Forms.Timer(this.components);
-            this.MenuContext.SuspendLayout();
             this.SuspendLayout();
             // 
             // HourLabel
@@ -58,7 +46,6 @@ namespace PersonalClock.Views
             this.HourLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.HourLabel.ContextMenuStrip = this.MenuContext;
             this.HourLabel.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HourLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.HourLabel.Location = new System.Drawing.Point(-3, 5);
@@ -128,83 +115,6 @@ namespace PersonalClock.Views
             // 
             this.Form_drag2.TargetControl = this.DateLabel;
             // 
-            // MenuContext
-            // 
-            this.MenuContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.configuracionesToolStripMenuItem,
-            this.salirToolStripMenuItem});
-            this.MenuContext.Name = "MenuContext";
-            this.MenuContext.Size = new System.Drawing.Size(162, 54);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(158, 6);
-            // 
-            // configuracionesToolStripMenuItem
-            // 
-            this.configuracionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.opacidadDeVentanaToolStripMenuItem,
-            this.siempreAlFrenteToolStripMenuItem,
-            this.reiniciarDatosDeFabricaToolStripMenuItem,
-            this.datosDeFabricaToolStripMenuItem});
-            this.configuracionesToolStripMenuItem.Name = "configuracionesToolStripMenuItem";
-            this.configuracionesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.configuracionesToolStripMenuItem.Text = "Configuraciones";
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click_1);
-            // 
-            // opacidadDeVentanaToolStripMenuItem
-            // 
-            this.opacidadDeVentanaToolStripMenuItem.Name = "opacidadDeVentanaToolStripMenuItem";
-            this.opacidadDeVentanaToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.opacidadDeVentanaToolStripMenuItem.Text = "Opacidad de ventana";
-            this.opacidadDeVentanaToolStripMenuItem.Click += new System.EventHandler(this.opacidadDeVentanaToolStripMenuItem_Click);
-            // 
-            // siempreAlFrenteToolStripMenuItem
-            // 
-            this.siempreAlFrenteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.siToolStripMenuItem,
-            this.noToolStripMenuItem});
-            this.siempreAlFrenteToolStripMenuItem.Name = "siempreAlFrenteToolStripMenuItem";
-            this.siempreAlFrenteToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.siempreAlFrenteToolStripMenuItem.Text = "Siempre al frente";
-            // 
-            // siToolStripMenuItem
-            // 
-            this.siToolStripMenuItem.Name = "siToolStripMenuItem";
-            this.siToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.siToolStripMenuItem.Text = "Si";
-            // 
-            // noToolStripMenuItem
-            // 
-            this.noToolStripMenuItem.Name = "noToolStripMenuItem";
-            this.noToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.noToolStripMenuItem.Text = "No";
-            // 
-            // reiniciarDatosDeFabricaToolStripMenuItem
-            // 
-            this.reiniciarDatosDeFabricaToolStripMenuItem.Name = "reiniciarDatosDeFabricaToolStripMenuItem";
-            this.reiniciarDatosDeFabricaToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.reiniciarDatosDeFabricaToolStripMenuItem.Text = "Horas para avisar";
-            // 
-            // datosDeFabricaToolStripMenuItem
-            // 
-            this.datosDeFabricaToolStripMenuItem.Name = "datosDeFabricaToolStripMenuItem";
-            this.datosDeFabricaToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.datosDeFabricaToolStripMenuItem.Text = "Restablecer configuracion";
-            // 
-            // AnimTimer
-            // 
-            this.AnimTimer.Interval = 1;
-            this.AnimTimer.Tick += new System.EventHandler(this.AnimTimer_Tick);
-            // 
             // HourUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(38F, 77F);
@@ -220,7 +130,6 @@ namespace PersonalClock.Views
             this.Name = "HourUserControl";
             this.Size = new System.Drawing.Size(262, 70);
             this.Load += new System.EventHandler(this.HourUserControl_Load);
-            this.MenuContext.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -236,16 +145,5 @@ namespace PersonalClock.Views
         private Guna.UI2.WinForms.Guna2DragControl Form_drag;
         private Guna.UI2.WinForms.Guna2DragControl Form_drag2;
         private System.Windows.Forms.ToolTip TooltipConfig;
-        private System.Windows.Forms.ContextMenuStrip MenuContext;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem configuracionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem opacidadDeVentanaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem siempreAlFrenteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem siToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reiniciarDatosDeFabricaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem datosDeFabricaToolStripMenuItem;
-        private System.Windows.Forms.Timer AnimTimer;
     }
 }

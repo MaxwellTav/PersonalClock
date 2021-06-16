@@ -11,4 +11,3 @@ C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.csproj.CopyCom
 C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.exe
 C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.pdb
 C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.Views.HourUserControl.resources
-C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.Views.ConfigOpacity.resources
