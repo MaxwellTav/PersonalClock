@@ -68,10 +68,18 @@ namespace PersonalClock.Views
                 Application.Exit();
         }
 
+
+        #region Animación Opacidad
         private void opacidadDeVentanaToolStripMenuItem_Click(object sender, EventArgs e)
+        { AnimTimer.Enabled = true; }
+
+        private void AnimTimer_Tick(object sender, EventArgs e)
         {
-            ConfigOpacity configOpacity = new ConfigOpacity();
-            configOpacity.ShowDialog();
+            if (Size.Width == )
+            {
+
+            }
         }
+        #endregion
     }
 }

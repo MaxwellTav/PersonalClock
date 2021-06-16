@@ -12,9 +12,8 @@ namespace PersonalClock
 
         public bool FirstTime; //Tal vez no es necesario ponerla publica
         public float FormOpacity = 100;
-        public bool AlwaysFront;
-        public int RefreshTimes;
-        public bool StartwithSo;
+        public bool AlwaysFront = false;
+        public bool StartwithSo = false;
 
         public Index()
         { InitializeComponent(); }

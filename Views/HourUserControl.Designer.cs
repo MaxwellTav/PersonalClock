@@ -47,10 +47,9 @@ namespace PersonalClock.Views
             this.siempreAlFrenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.númeroDeActualizacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iniciarConElSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.reiniciarDatosDeFabricaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datosDeFabricaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AnimTimer = new System.Windows.Forms.Timer(this.components);
             this.MenuContext.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,37 +135,35 @@ namespace PersonalClock.Views
             this.configuracionesToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.MenuContext.Name = "MenuContext";
-            this.MenuContext.Size = new System.Drawing.Size(181, 76);
+            this.MenuContext.Size = new System.Drawing.Size(162, 54);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(158, 6);
             // 
             // configuracionesToolStripMenuItem
             // 
             this.configuracionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.opacidadDeVentanaToolStripMenuItem,
             this.siempreAlFrenteToolStripMenuItem,
-            this.númeroDeActualizacionesToolStripMenuItem,
-            this.iniciarConElSistemaToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.reiniciarDatosDeFabricaToolStripMenuItem});
+            this.reiniciarDatosDeFabricaToolStripMenuItem,
+            this.datosDeFabricaToolStripMenuItem});
             this.configuracionesToolStripMenuItem.Name = "configuracionesToolStripMenuItem";
-            this.configuracionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configuracionesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.configuracionesToolStripMenuItem.Text = "Configuraciones";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click_1);
             // 
             // opacidadDeVentanaToolStripMenuItem
             // 
             this.opacidadDeVentanaToolStripMenuItem.Name = "opacidadDeVentanaToolStripMenuItem";
-            this.opacidadDeVentanaToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.opacidadDeVentanaToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.opacidadDeVentanaToolStripMenuItem.Text = "Opacidad de ventana";
             this.opacidadDeVentanaToolStripMenuItem.Click += new System.EventHandler(this.opacidadDeVentanaToolStripMenuItem_Click);
             // 
@@ -176,7 +173,7 @@ namespace PersonalClock.Views
             this.siToolStripMenuItem,
             this.noToolStripMenuItem});
             this.siempreAlFrenteToolStripMenuItem.Name = "siempreAlFrenteToolStripMenuItem";
-            this.siempreAlFrenteToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.siempreAlFrenteToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.siempreAlFrenteToolStripMenuItem.Text = "Siempre al frente";
             // 
             // siToolStripMenuItem
@@ -191,28 +188,22 @@ namespace PersonalClock.Views
             this.noToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.noToolStripMenuItem.Text = "No";
             // 
-            // númeroDeActualizacionesToolStripMenuItem
-            // 
-            this.númeroDeActualizacionesToolStripMenuItem.Name = "númeroDeActualizacionesToolStripMenuItem";
-            this.númeroDeActualizacionesToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.númeroDeActualizacionesToolStripMenuItem.Text = "Número de actualizaciones";
-            // 
-            // iniciarConElSistemaToolStripMenuItem
-            // 
-            this.iniciarConElSistemaToolStripMenuItem.Name = "iniciarConElSistemaToolStripMenuItem";
-            this.iniciarConElSistemaToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.iniciarConElSistemaToolStripMenuItem.Text = "Iniciar con el sistema";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(214, 6);
-            // 
             // reiniciarDatosDeFabricaToolStripMenuItem
             // 
             this.reiniciarDatosDeFabricaToolStripMenuItem.Name = "reiniciarDatosDeFabricaToolStripMenuItem";
-            this.reiniciarDatosDeFabricaToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.reiniciarDatosDeFabricaToolStripMenuItem.Text = "Reiniciar datos de fabrica";
+            this.reiniciarDatosDeFabricaToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.reiniciarDatosDeFabricaToolStripMenuItem.Text = "Horas para avisar";
+            // 
+            // datosDeFabricaToolStripMenuItem
+            // 
+            this.datosDeFabricaToolStripMenuItem.Name = "datosDeFabricaToolStripMenuItem";
+            this.datosDeFabricaToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.datosDeFabricaToolStripMenuItem.Text = "Restablecer configuracion";
+            // 
+            // AnimTimer
+            // 
+            this.AnimTimer.Interval = 1;
+            this.AnimTimer.Tick += new System.EventHandler(this.AnimTimer_Tick);
             // 
             // HourUserControl
             // 
@@ -252,10 +243,9 @@ namespace PersonalClock.Views
         private System.Windows.Forms.ToolStripMenuItem siempreAlFrenteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem siToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem númeroDeActualizacionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem iniciarConElSistemaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem reiniciarDatosDeFabricaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datosDeFabricaToolStripMenuItem;
+        private System.Windows.Forms.Timer AnimTimer;
     }
 }

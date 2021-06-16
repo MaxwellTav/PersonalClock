@@ -52,12 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\PathClass.cs" />
-    <Compile Include="Views\ConfigOpacity.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ConfigOpacity.Designer.cs">
-      <DependentUpon>ConfigOpacity.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Index.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,9 +66,6 @@
     <Compile Include="Views\HourUserControl.Designer.cs">
       <DependentUpon>HourUserControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\ConfigOpacity.resx">
-      <DependentUpon>ConfigOpacity.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\HourUserControl.resx">
       <DependentUpon>HourUserControl.cs</DependentUpon>
     </EmbeddedResource>
