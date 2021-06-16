@@ -39,6 +39,7 @@ namespace PersonalClock.Views
             this.Form_drag = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Form_drag2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.TooltipConfig = new System.Windows.Forms.ToolTip(this.components);
+            this.LoadingIndicador = new Guna.UI2.WinForms.Guna2ProgressIndicator();
             this.SuspendLayout();
             // 
             // HourLabel
@@ -53,8 +54,9 @@ namespace PersonalClock.Views
             this.HourLabel.Name = "HourLabel";
             this.HourLabel.Size = new System.Drawing.Size(270, 39);
             this.HourLabel.TabIndex = 0;
-            this.HourLabel.Text = "00  00  00  PM";
+            this.HourLabel.Text = "Bienvenido";
             this.HourLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.HourLabel.TextChanged += new System.EventHandler(this.HourLabel_TextChanged);
             // 
             // HourTimer
             // 
@@ -74,7 +76,7 @@ namespace PersonalClock.Views
             this.DateLabel.Name = "DateLabel";
             this.DateLabel.Size = new System.Drawing.Size(262, 21);
             this.DateLabel.TabIndex = 1;
-            this.DateLabel.Text = "07/09/2001 | Viernes";
+            this.DateLabel.Text = "Estamos preparando todo...";
             this.DateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DetailDotLabel1
@@ -88,6 +90,7 @@ namespace PersonalClock.Views
             this.DetailDotLabel1.Size = new System.Drawing.Size(18, 31);
             this.DetailDotLabel1.TabIndex = 2;
             this.DetailDotLabel1.Text = ":";
+            this.DetailDotLabel1.Visible = false;
             // 
             // DetailDotLabel2
             // 
@@ -100,10 +103,10 @@ namespace PersonalClock.Views
             this.DetailDotLabel2.Size = new System.Drawing.Size(18, 31);
             this.DetailDotLabel2.TabIndex = 3;
             this.DetailDotLabel2.Text = ":";
+            this.DetailDotLabel2.Visible = false;
             // 
             // DetailDotAnim
             // 
-            this.DetailDotAnim.Enabled = true;
             this.DetailDotAnim.Interval = 200;
             this.DetailDotAnim.Tick += new System.EventHandler(this.DetailDotAnim_Tick);
             // 
@@ -115,11 +118,22 @@ namespace PersonalClock.Views
             // 
             this.Form_drag2.TargetControl = this.DateLabel;
             // 
+            // LoadingIndicador
+            // 
+            this.LoadingIndicador.AutoStart = true;
+            this.LoadingIndicador.CircleSize = 1F;
+            this.LoadingIndicador.Location = new System.Drawing.Point(242, 50);
+            this.LoadingIndicador.Name = "LoadingIndicador";
+            this.LoadingIndicador.ProgressColor = System.Drawing.Color.White;
+            this.LoadingIndicador.Size = new System.Drawing.Size(20, 20);
+            this.LoadingIndicador.TabIndex = 4;
+            // 
             // HourUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(38F, 77F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.Controls.Add(this.LoadingIndicador);
             this.Controls.Add(this.DetailDotLabel2);
             this.Controls.Add(this.DetailDotLabel1);
             this.Controls.Add(this.DateLabel);
@@ -145,5 +159,6 @@ namespace PersonalClock.Views
         private Guna.UI2.WinForms.Guna2DragControl Form_drag;
         private Guna.UI2.WinForms.Guna2DragControl Form_drag2;
         private System.Windows.Forms.ToolTip TooltipConfig;
+        private Guna.UI2.WinForms.Guna2ProgressIndicator LoadingIndicador;
     }
 }

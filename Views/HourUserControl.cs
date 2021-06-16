@@ -50,5 +50,8 @@ namespace PersonalClock.Views
             #endregion
         }
         #endregion
+
+        private void HourLabel_TextChanged(object sender, EventArgs e)
+        { DetailDotAnim.Enabled = true; LoadingIndicador.Visible = false; }
     }
 }

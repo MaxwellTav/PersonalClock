@@ -88,6 +88,10 @@ namespace PersonalClock
                     AlwaysFront = false;
                 }
             }
+
+            //Bug de la barra de Opacidad
+            OpacityValue.Value = (int)(Opacity * 100);
+            TitleLabel.Text = "Opacidad: " + OpacityValue.Value + "%";
         }
 
         #region Menú

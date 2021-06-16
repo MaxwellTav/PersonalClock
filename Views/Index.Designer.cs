@@ -30,6 +30,7 @@ namespace PersonalClock
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Index));
             this.Form_elipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.OpacityPanel = new System.Windows.Forms.Panel();
             this.ApplyButton = new Guna.UI2.WinForms.Guna2GradientTileButton();
@@ -202,10 +203,11 @@ namespace PersonalClock
             this.TVDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TVDateTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.TVDateTime.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.TVDateTime.ContextMenuStrip = this.MenuContext;
             this.TVDateTime.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TVDateTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.TVDateTime.Location = new System.Drawing.Point(0, 3);
+            this.TVDateTime.Location = new System.Drawing.Point(3, 1);
             this.TVDateTime.Margin = new System.Windows.Forms.Padding(19, 18, 19, 18);
             this.TVDateTime.Name = "TVDateTime";
             this.TVDateTime.Size = new System.Drawing.Size(263, 72);
@@ -222,6 +224,7 @@ namespace PersonalClock
             this.Controls.Add(this.TVDateTime);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Index";
             this.OpacityPanel.ResumeLayout(false);
