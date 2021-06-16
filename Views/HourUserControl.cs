@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace PersonalClock.Views
     {
         //Variables
         private bool DotLabelBool = true;
+        CultureInfo ci = new CultureInfo("Es-Es");
 
         #region Useless or Untouchable
         public HourUserControl()
@@ -22,8 +24,16 @@ namespace PersonalClock.Views
 
         private void HourTimer_Tick(object sender, EventArgs e)
         {
+            //Hora, minutos, segundos, Meridiano
             HourLabel.Text = System.DateTime.Now.ToString("hh  mm  ss  tt");
-            DateLabel.Text = System.DateTime.Now.ToString("dd/MMM/yyyy | dddd");
+            //Dia
+            DateLabel.Text = System.DateTime.Now.ToString("dd/");
+            //Mes
+            DateLabel.Text += ci.DateTimeFormat.GetMonthName(DateTime.Now.Month);
+            //Año
+            DateLabel.Text += System.DateTime.Now.ToString("/yyyy | ");
+            //Dia de la semana
+            DateLabel.Text += ci.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek);
         }
 
         #region Detallitos

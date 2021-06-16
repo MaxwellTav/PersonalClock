@@ -671,4 +671,7 @@
   <metadata name="CloseOpacityTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>108, 24</value>
   </metadata>
+  <metadata name="RestCronometro.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>297, 6</value>
+  </metadata>
 </root>

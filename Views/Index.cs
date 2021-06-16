@@ -13,11 +13,13 @@ namespace PersonalClock
         private Classes.PathClass pathClass = new Classes.PathClass();
 
         public bool FirstTime; //Tal vez no es necesario ponerla publica
-        public float FormOpacity = 1;
-        public bool AlwaysFront = false;
+        private float FormOpacity = 1;
+        private bool AlwaysFront = false;
 
         //Settings
         int smoth = 10;
+        private int TimeCronometro = 7200;
+        private int saveTimeCronometro;
 
         public Index()
         { InitializeComponent(); }
@@ -30,7 +32,13 @@ namespace PersonalClock
             if (File.Exists(pathClass._Path + "FormOpacity.txt"))
             { FirstTime = false; LoadConfig(); }//¿No es primera vez?, pues carga
             else
-            { FirstTime = true; SaveConfig(); }//¿Es primera vez?, pues crea y/o guarda
+            {
+                //¿Es primera vez?, pues crea y/o guarda}
+                MessageBox.Show("Bienvenido, Click derecho en la hora para más opciones", "Bienvenido a PersonalClock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                FirstTime = true; SaveConfig();
+            }
+
+            saveTimeCronometro = TimeCronometro;
         }
 
         private void SaveConfig()
@@ -135,7 +143,7 @@ namespace PersonalClock
                 CloseOpacityTimer.Enabled = false;
                 Size = new Size(530, 254);
             }
-                
+
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
@@ -183,7 +191,67 @@ namespace PersonalClock
 
         #region Iniciar con el sistema
         private void iniciarConElSistemaToolStripMenuItem_Click(object sender, EventArgs e)
-        { MessageBox.Show("Lamentablemente nosotros por nuestra cuenta no podemos hacer esta funcion, pero usted si...\n\nPara hacer esta acción manual, deberá crear un acceso directo de esta aplicación, cortarla y luego pegarla en la siguiente ubicación:\n\n" + @"C:\Users\The User Name\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" + "\n\nLa ubicación puede variar.\n\nDisculpe los inconvenientes. :,(", "Excepción no programada", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        {
+            Clipboard.SetText("shell:startup");
+            MessageBox.Show("Lamentablemente nosotros por nuestra cuenta no podemos hacer esta funcion, pero usted si...\n\nEs muy facil. Para hacer esta acción manual, deberá hacer lo siguiente:\n\n1.Crear un acceso directo de esta aplicación\n2.Copiar esta ubicación = \"shell:startup\" (ya está copiada en tu portapapeles)\n3.Presionar en tu teclado \"Tecla de windows + R\"\n4.Pega el texto copiado y darle a \"Enter\"\n5.Copiar y pegar el acceso directo de la aplicación que creaste en la carpeta que se abrió\n6.Listo\n\nDisculpe los inconvenientes. :,(", "Excepción no controlada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        #endregion
+
+        #region Cronometro
+        private void fijarTiempoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string Body = "Digite el tiempo en segundos que quisiera setear para avisar\n\n(Por defecto: \"2 Horas (7200 segundos)\")",
+                Title = "Ingrese el tiempo en segundos",
+                DefaultInput = "7200";
+
+            string dialogo = Microsoft.VisualBasic.Interaction.InputBox(Body, Title, DefaultInput);
+
+            try
+            {
+                TimeCronometro = Int32.Parse(dialogo);
+                saveTimeCronometro = TimeCronometro;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("No puedes hacer semejante barbaridad\n\n" + "Causas del error:" + error.Message, "Codigo del error: " + error.HResult, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void RestCronometro_Tick(object sender, EventArgs e)
+        {
+            if (saveTimeCronometro > 0)
+                saveTimeCronometro--;
+            else
+                Alarma();
+        }
+
+        private void Alarma()
+        {
+            RestCronometro.Enabled = false;
+            saveTimeCronometro = TimeCronometro;
+
+            Random rng = new Random();
+            string[] Body1 = { "Descansa tu espalda y tus ojos ", "Estár mucho tiempo en la pc te hace mal ¿Sabías?" };
+            string[] Body2 = { "Es cierto que quieres ser productivo, pero no podrás serlo si no estas...\n¿Como decirlo?\nVIVO...", "Hazte un favor, y apartate de la computadora al menos 5 minutos..." };
+            string[] Title = { "La mejor manera de trabajar es con un buen descanso", "Deberías descansar, has estado mucho tiempo en la pc" };
+
+            DialogResult dialogResult = MessageBox.Show(Body1[rng.Next(0, Body1.Length)] + ", " + Body2[rng.Next(0, Body2.Length)] + "\n\nCuando hayas vuelto presiona el boton \"Si\" para continuar trabajando", Title[rng.Next(0, Title.Length)], MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (dialogResult == DialogResult.Yes)
+                RestCronometro.Enabled = true;
+        }
+
+        private void siToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            RestCronometro.Enabled = true;
+            MessageBox.Show("Se activó el cronometro de descanso, sonará en " + saveTimeCronometro + " segundos", "Cronometro de descanso activado", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void noToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            RestCronometro.Enabled = false;
+            saveTimeCronometro = TimeCronometro;
+        }
         #endregion
     }
 }
