@@ -23,30 +23,51 @@ namespace PersonalClock.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
         public global::System.Drawing.Point Ubicacion {
             get {
                 return ((global::System.Drawing.Point)(this["Ubicacion"]));
             }
+            set {
+                this["Ubicacion"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public double Opacidad {
             get {
                 return ((double)(this["Opacidad"]));
             }
+            set {
+                this["Opacidad"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ShowInTop {
             get {
                 return ((bool)(this["ShowInTop"]));
+            }
+            set {
+                this["ShowInTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ReallyShowTop {
+            get {
+                return ((bool)(this["ReallyShowTop"]));
+            }
+            set {
+                this["ReallyShowTop"] = value;
             }
         }
     }

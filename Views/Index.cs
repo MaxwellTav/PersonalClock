@@ -14,7 +14,8 @@ namespace PersonalClock
 
         public bool FirstTime; //Tal vez no es necesario ponerla publica
         private double FormOpacity = 1;
-        private bool AlwaysFront = false;
+        private bool showInTaskBar = false;
+        private bool showTop;
 
         private Point FormLocation;
 
@@ -33,14 +34,16 @@ namespace PersonalClock
         {
             FormLocation = Location;
             FormOpacity = Opacity;
-            AlwaysFront = ShowInTaskbar;
+            showInTaskBar = ShowInTaskbar;
+            showTop = TopMost;
 
             try
             {
                 //opacity, always, showtop
                 Properties.Settings.Default["Ubicacion"] = FormLocation;
                 Properties.Settings.Default["Opacidad"] = Opacity;
-                Properties.Settings.Default["ShowInTop"] = AlwaysFront;
+                Properties.Settings.Default["ShowInTop"] = showInTaskBar;
+                Properties.Settings.Default["ReallyShowTop"] = showTop;
 
                 Properties.Settings.Default.Save();
             }
@@ -60,6 +63,7 @@ namespace PersonalClock
             Location = new Point((Size)Properties.Settings.Default.Ubicacion);
             Opacity = Properties.Settings.Default.Opacidad;
             ShowInTaskbar = Properties.Settings.Default.ShowInTop;
+            TopMost = Properties.Settings.Default.ReallyShowTop;
             
             //Bug de la barra de Opacidad
             //OpacityValue.Value = (int)(Opacity * 100);
@@ -150,10 +154,10 @@ namespace PersonalClock
 
         #region Siempre al frente
         private void siToolStripMenuItem_Click(object sender, EventArgs e)
-        { AlwaysFront = true; TopMost = true; SaveConfig(); }
+        { showInTaskBar = true; TopMost = true; SaveConfig(); }
 
         private void noToolStripMenuItem_Click(object sender, EventArgs e)
-        { AlwaysFront = false; TopMost = false; SaveConfig(); }
+        { showInTaskBar = false; TopMost = false; SaveConfig(); }
         #endregion
 
         #region Iniciar con el sistema
@@ -234,8 +238,6 @@ namespace PersonalClock
         #endregion
 
         private void Index_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            SaveConfig();
-        }
+        { SaveConfig(); }
     }
 }
