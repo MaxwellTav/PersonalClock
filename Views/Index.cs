@@ -14,7 +14,8 @@ namespace PersonalClock
 
         public bool FirstTime; //Tal vez no es necesario ponerla publica
         private float FormOpacity = 1;
-        private bool AlwaysFront = false;
+        private bool AlwaysFront = false,
+            ShowInBar = true;
 
         //Settings
         int smoth = 10;
@@ -48,15 +49,18 @@ namespace PersonalClock
                 #region Variables
                 TextWriter opacityWritter = new StreamWriter(pathClass._Path + "FormOpacity.txt", true);
                 TextWriter alwaysWritter = new StreamWriter(pathClass._Path + "AlwaysFront.txt", true);
+                TextWriter showInBar = new StreamWriter(pathClass._Path + "ShowInTaskBar.txt", true);
                 #endregion
                 #region Escritura
                 //Opacidad
                 opacityWritter.WriteLine(FormOpacity);
                 alwaysWritter.WriteLine(AlwaysFront);
+                showInBar.WriteLine(ShowInBar);
                 #endregion
                 #region Aplicar escritura a todo
                 opacityWritter.Close();
                 alwaysWritter.Close();
+                showInBar.Close();
                 #endregion
             }
             catch (Exception error)
@@ -85,15 +89,35 @@ namespace PersonalClock
             _lines = File.ReadAllLines(pathClass._Path + "AlwaysFront.txt").ToList();
             foreach (string line in _lines)
             {
-                if (line == "True")
+                switch(line)
                 {
-                    TopMost = true;
-                    AlwaysFront = true;
+                    case "True":
+                        TopMost = true;
+                        AlwaysFront = true;
+                        break;
+
+                    default:
+                        TopMost = false;
+                        AlwaysFront = false;
+                        break;
                 }
-                else
+            }
+
+            //__________________________________________________________________
+
+            List<string> showLine = new List<string>();
+            showLine = File.ReadAllLines(pathClass._Path + "ShowInTaskBar.txt").ToList();
+            foreach(string showL in showLine)
+            {
+                switch(showL)
                 {
-                    TopMost = false;
-                    AlwaysFront = false;
+                    case "True":
+                        ShowInTaskbar = false;
+                        break;
+
+                    default:
+                        ShowInTaskbar = true;
+                        break;
                 }
             }
 
@@ -252,6 +276,14 @@ namespace PersonalClock
             RestCronometro.Enabled = false;
             saveTimeCronometro = TimeCronometro;
         }
+        #endregion
+
+        #region Barra de tareas
+        private void siToolStripMenuItem2_Click(object sender, EventArgs e)
+        { ShowInTaskbar = false; }
+
+        private void noToolStripMenuItem2_Click(object sender, EventArgs e)
+        { ShowInTaskbar = true; }
         #endregion
     }
 }
