@@ -89,7 +89,7 @@ namespace PersonalClock
             _lines = File.ReadAllLines(pathClass._Path + "AlwaysFront.txt").ToList();
             foreach (string line in _lines)
             {
-                switch(line)
+                switch (line)
                 {
                     case "True":
                         TopMost = true;
@@ -107,9 +107,9 @@ namespace PersonalClock
 
             List<string> showLine = new List<string>();
             showLine = File.ReadAllLines(pathClass._Path + "ShowInTaskBar.txt").ToList();
-            foreach(string showL in showLine)
+            foreach (string showL in showLine)
             {
-                switch(showL)
+                switch (showL)
                 {
                     case "True":
                         ShowInTaskbar = false;
@@ -226,9 +226,9 @@ namespace PersonalClock
         {
             string Body = "Digite el tiempo en segundos que quisiera setear para avisar\n\n(Por defecto: \"2 Horas (7200 segundos)\")",
                 Title = "Ingrese el tiempo en segundos",
-                DefaultInput = "7200";
+                DefaultInput = "7200",
 
-            string dialogo = Microsoft.VisualBasic.Interaction.InputBox(Body, Title, DefaultInput);
+                dialogo = Microsoft.VisualBasic.Interaction.InputBox(Body, Title, DefaultInput);
 
             try
             {
@@ -244,13 +244,17 @@ namespace PersonalClock
         private void RestCronometro_Tick(object sender, EventArgs e)
         {
             if (saveTimeCronometro > 0)
+            {
+                AlarmIndicator.Visible = true;
                 saveTimeCronometro--;
+            }
             else
                 Alarma();
         }
 
         private void Alarma()
         {
+            AlarmIndicator.Visible = false;
             RestCronometro.Enabled = false;
             saveTimeCronometro = TimeCronometro;
 
