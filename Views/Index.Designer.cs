@@ -57,9 +57,9 @@ namespace PersonalClock
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.noToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.TVDateTime = new PersonalClock.Views.HourUserControl();
             this.RestCronometro = new System.Windows.Forms.Timer(this.components);
             this.AlarmIndicator = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.TVDateTime = new PersonalClock.Views.HourUserControl();
             this.OpacityPanel.SuspendLayout();
             this.MenuContext.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmIndicator)).BeginInit();
@@ -269,31 +269,16 @@ namespace PersonalClock
             // siToolStripMenuItem2
             // 
             this.siToolStripMenuItem2.Name = "siToolStripMenuItem2";
-            this.siToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.siToolStripMenuItem2.Size = new System.Drawing.Size(90, 22);
             this.siToolStripMenuItem2.Text = "Si";
             this.siToolStripMenuItem2.Click += new System.EventHandler(this.siToolStripMenuItem2_Click);
             // 
             // noToolStripMenuItem2
             // 
             this.noToolStripMenuItem2.Name = "noToolStripMenuItem2";
-            this.noToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.noToolStripMenuItem2.Size = new System.Drawing.Size(90, 22);
             this.noToolStripMenuItem2.Text = "No";
             this.noToolStripMenuItem2.Click += new System.EventHandler(this.noToolStripMenuItem2_Click);
-            // 
-            // TVDateTime
-            // 
-            this.TVDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TVDateTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.TVDateTime.ContextMenuStrip = this.MenuContext;
-            this.TVDateTime.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TVDateTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.TVDateTime.Location = new System.Drawing.Point(3, 1);
-            this.TVDateTime.Margin = new System.Windows.Forms.Padding(19, 18, 19, 18);
-            this.TVDateTime.Name = "TVDateTime";
-            this.TVDateTime.Size = new System.Drawing.Size(263, 72);
-            this.TVDateTime.TabIndex = 0;
-            this.TVDateTime.Load += new System.EventHandler(this.TVDateTime_Load);
             // 
             // RestCronometro
             // 
@@ -312,6 +297,22 @@ namespace PersonalClock
             this.AlarmIndicator.Size = new System.Drawing.Size(15, 15);
             this.AlarmIndicator.TabIndex = 2;
             this.AlarmIndicator.TabStop = false;
+            this.AlarmIndicator.Visible = false;
+            // 
+            // TVDateTime
+            // 
+            this.TVDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TVDateTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.TVDateTime.ContextMenuStrip = this.MenuContext;
+            this.TVDateTime.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TVDateTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.TVDateTime.Location = new System.Drawing.Point(3, 1);
+            this.TVDateTime.Margin = new System.Windows.Forms.Padding(19, 18, 19, 18);
+            this.TVDateTime.Name = "TVDateTime";
+            this.TVDateTime.Size = new System.Drawing.Size(263, 72);
+            this.TVDateTime.TabIndex = 0;
+            this.TVDateTime.Load += new System.EventHandler(this.TVDateTime_Load);
             // 
             // Index
             // 

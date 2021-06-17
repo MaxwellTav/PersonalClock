@@ -76,7 +76,7 @@ namespace PersonalClock
 
         private void LoadConfig()
         {
-            //Leyendo el archivo de la opacidad
+            //Opacidad
             List<string> lines = new List<string>();
             lines = File.ReadAllLines(pathClass._Path + "FormOpacity.txt").ToList();
             foreach (string line in lines)
@@ -84,7 +84,7 @@ namespace PersonalClock
 
             //__________________________________________________________________
 
-            //Leyendo el archivo de siempre en frete
+            //En frente
             List<string> _lines = new List<string>();
             _lines = File.ReadAllLines(pathClass._Path + "AlwaysFront.txt").ToList();
             foreach (string line in _lines)
@@ -105,6 +105,7 @@ namespace PersonalClock
 
             //__________________________________________________________________
 
+            //Show in task
             List<string> showLine = new List<string>();
             showLine = File.ReadAllLines(pathClass._Path + "ShowInTaskBar.txt").ToList();
             foreach (string showL in showLine)
@@ -113,13 +114,18 @@ namespace PersonalClock
                 {
                     case "True":
                         ShowInTaskbar = false;
+                        ShowIcon = false;
                         break;
 
                     default:
                         ShowInTaskbar = true;
+                        ShowIcon = true;
                         break;
                 }
             }
+
+            //__________________________________________________________________
+
 
             //Bug de la barra de Opacidad
             OpacityValue.Value = (int)(Opacity * 100);
