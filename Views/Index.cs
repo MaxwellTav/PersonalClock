@@ -13,9 +13,10 @@ namespace PersonalClock
         private Classes.PathClass pathClass = new Classes.PathClass();
 
         public bool FirstTime; //Tal vez no es necesario ponerla publica
-        private float FormOpacity = 1;
-        private bool AlwaysFront = false,
-            ShowInBar = true;
+        private double FormOpacity = 1;
+        private bool AlwaysFront = false;
+
+        private Point FormLocation;
 
         //Settings
         int smoth = 10;
@@ -26,42 +27,22 @@ namespace PersonalClock
         { InitializeComponent(); }
 
         private void TVDateTime_Load(object sender, EventArgs e)
-        { ApplySavedConfigForm(); }
-
-        private void ApplySavedConfigForm()
-        {
-            if (File.Exists(pathClass._Path + "FormOpacity.txt"))
-            { FirstTime = false; LoadConfig(); }//¿No es primera vez?, pues carga
-            else
-            {
-                //¿Es primera vez?, pues crea y/o guarda}
-                MessageBox.Show("Bienvenido, Click derecho en la hora para más opciones", "Bienvenido a PersonalClock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                FirstTime = true; SaveConfig();
-            }
-
-            saveTimeCronometro = TimeCronometro;
-        }
+        { saveTimeCronometro = TimeCronometro; LoadConfig(); }
 
         private void SaveConfig()
         {
+            FormLocation = Location;
+            FormOpacity = Opacity;
+            AlwaysFront = ShowInTaskbar;
+
             try
             {
-                #region Variables
-                TextWriter opacityWritter = new StreamWriter(pathClass._Path + "FormOpacity.txt", true);
-                TextWriter alwaysWritter = new StreamWriter(pathClass._Path + "AlwaysFront.txt", true);
-                TextWriter showInBar = new StreamWriter(pathClass._Path + "ShowInTaskBar.txt", true);
-                #endregion
-                #region Escritura
-                //Opacidad
-                opacityWritter.WriteLine(FormOpacity);
-                alwaysWritter.WriteLine(AlwaysFront);
-                showInBar.WriteLine(ShowInBar);
-                #endregion
-                #region Aplicar escritura a todo
-                opacityWritter.Close();
-                alwaysWritter.Close();
-                showInBar.Close();
-                #endregion
+                //opacity, always, showtop
+                Properties.Settings.Default["Ubicacion"] = FormLocation;
+                Properties.Settings.Default["Opacidad"] = Opacity;
+                Properties.Settings.Default["ShowInTop"] = AlwaysFront;
+
+                Properties.Settings.Default.Save();
             }
             catch (Exception error)
             {
@@ -70,65 +51,18 @@ namespace PersonalClock
                     MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
                 if (dialog == DialogResult.Yes)
-                    ApplySavedConfigForm();
+                    SaveConfig();
             }
         }
 
         private void LoadConfig()
         {
-            //Opacidad
-            List<string> lines = new List<string>();
-            lines = File.ReadAllLines(pathClass._Path + "FormOpacity.txt").ToList();
-            foreach (string line in lines)
-            { Opacity = float.Parse(line); }
-
-            //__________________________________________________________________
-
-            //En frente
-            List<string> _lines = new List<string>();
-            _lines = File.ReadAllLines(pathClass._Path + "AlwaysFront.txt").ToList();
-            foreach (string line in _lines)
-            {
-                switch (line)
-                {
-                    case "True":
-                        TopMost = true;
-                        AlwaysFront = true;
-                        break;
-
-                    default:
-                        TopMost = false;
-                        AlwaysFront = false;
-                        break;
-                }
-            }
-
-            //__________________________________________________________________
-
-            //Show in task
-            List<string> showLine = new List<string>();
-            showLine = File.ReadAllLines(pathClass._Path + "ShowInTaskBar.txt").ToList();
-            foreach (string showL in showLine)
-            {
-                switch (showL)
-                {
-                    case "True":
-                        ShowInTaskbar = false;
-                        ShowIcon = false;
-                        break;
-
-                    default:
-                        ShowInTaskbar = true;
-                        ShowIcon = true;
-                        break;
-                }
-            }
-
-            //__________________________________________________________________
-
-
+            Location = new Point((Size)Properties.Settings.Default.Ubicacion);
+            Opacity = Properties.Settings.Default.Opacidad;
+            ShowInTaskbar = Properties.Settings.Default.ShowInTop;
+            
             //Bug de la barra de Opacidad
-            OpacityValue.Value = (int)(Opacity * 100);
+            //OpacityValue.Value = (int)(Opacity * 100);
             TitleLabel.Text = "Opacidad: " + OpacityValue.Value + "%";
         }
 
@@ -146,7 +80,10 @@ namespace PersonalClock
                 MessageBoxDefaultButton.Button2);
 
             if (Dialog == DialogResult.Yes)
+            {
+                SaveConfig();
                 Application.Exit();
+            }
         }
 
         #region Open Close Anim
@@ -295,5 +232,10 @@ namespace PersonalClock
         private void noToolStripMenuItem2_Click(object sender, EventArgs e)
         { ShowInTaskbar = true; }
         #endregion
+
+        private void Index_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveConfig();
+        }
     }
 }

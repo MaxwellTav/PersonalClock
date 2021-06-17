@@ -30,6 +30,7 @@ namespace PersonalClock.Views
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HourUserControl));
             this.HourLabel = new System.Windows.Forms.Label();
             this.HourTimer = new System.Windows.Forms.Timer(this.components);
             this.DateLabel = new System.Windows.Forms.Label();
@@ -44,18 +45,11 @@ namespace PersonalClock.Views
             // 
             // HourLabel
             // 
-            this.HourLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.HourLabel.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.HourLabel, "HourLabel");
             this.HourLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.HourLabel.Location = new System.Drawing.Point(-3, 5);
-            this.HourLabel.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.HourLabel.Name = "HourLabel";
-            this.HourLabel.Size = new System.Drawing.Size(270, 39);
-            this.HourLabel.TabIndex = 0;
-            this.HourLabel.Text = "Bienvenido";
-            this.HourLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TooltipConfig.SetToolTip(this.HourLabel, resources.GetString("HourLabel.ToolTip"));
+            this.HourLabel.UseWaitCursor = true;
             this.HourLabel.TextChanged += new System.EventHandler(this.HourLabel_TextChanged);
             // 
             // HourTimer
@@ -66,44 +60,24 @@ namespace PersonalClock.Views
             // 
             // DateLabel
             // 
-            this.DateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DateLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.DateLabel, "DateLabel");
             this.DateLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DateLabel.Location = new System.Drawing.Point(0, 44);
-            this.DateLabel.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.DateLabel.Name = "DateLabel";
-            this.DateLabel.Size = new System.Drawing.Size(262, 21);
-            this.DateLabel.TabIndex = 1;
-            this.DateLabel.Text = "Estamos preparando todo...";
-            this.DateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TooltipConfig.SetToolTip(this.DateLabel, resources.GetString("DateLabel.ToolTip"));
             // 
             // DetailDotLabel1
             // 
-            this.DetailDotLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DetailDotLabel1.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.DetailDotLabel1, "DetailDotLabel1");
             this.DetailDotLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DetailDotLabel1.Location = new System.Drawing.Point(51, 7);
-            this.DetailDotLabel1.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.DetailDotLabel1.Name = "DetailDotLabel1";
-            this.DetailDotLabel1.Size = new System.Drawing.Size(18, 31);
-            this.DetailDotLabel1.TabIndex = 2;
-            this.DetailDotLabel1.Text = ":";
-            this.DetailDotLabel1.Visible = false;
+            this.TooltipConfig.SetToolTip(this.DetailDotLabel1, resources.GetString("DetailDotLabel1.ToolTip"));
             // 
             // DetailDotLabel2
             // 
-            this.DetailDotLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DetailDotLabel2.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.DetailDotLabel2, "DetailDotLabel2");
             this.DetailDotLabel2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DetailDotLabel2.Location = new System.Drawing.Point(113, 7);
-            this.DetailDotLabel2.Margin = new System.Windows.Forms.Padding(19, 0, 19, 0);
             this.DetailDotLabel2.Name = "DetailDotLabel2";
-            this.DetailDotLabel2.Size = new System.Drawing.Size(18, 31);
-            this.DetailDotLabel2.TabIndex = 3;
-            this.DetailDotLabel2.Text = ":";
-            this.DetailDotLabel2.Visible = false;
+            this.TooltipConfig.SetToolTip(this.DetailDotLabel2, resources.GetString("DetailDotLabel2.ToolTip"));
             // 
             // DetailDotAnim
             // 
@@ -120,29 +94,27 @@ namespace PersonalClock.Views
             // 
             // LoadingIndicador
             // 
+            resources.ApplyResources(this.LoadingIndicador, "LoadingIndicador");
             this.LoadingIndicador.AutoStart = true;
             this.LoadingIndicador.CircleSize = 1F;
-            this.LoadingIndicador.Location = new System.Drawing.Point(242, 50);
             this.LoadingIndicador.Name = "LoadingIndicador";
             this.LoadingIndicador.ProgressColor = System.Drawing.Color.White;
-            this.LoadingIndicador.Size = new System.Drawing.Size(20, 20);
-            this.LoadingIndicador.TabIndex = 4;
+            this.TooltipConfig.SetToolTip(this.LoadingIndicador, resources.GetString("LoadingIndicador.ToolTip"));
             // 
             // HourUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(38F, 77F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.Controls.Add(this.LoadingIndicador);
             this.Controls.Add(this.DetailDotLabel2);
             this.Controls.Add(this.DetailDotLabel1);
+            this.Controls.Add(this.LoadingIndicador);
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.HourLabel);
-            this.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Margin = new System.Windows.Forms.Padding(19, 18, 19, 18);
             this.Name = "HourUserControl";
-            this.Size = new System.Drawing.Size(262, 70);
+            this.TooltipConfig.SetToolTip(this, resources.GetString("$this.ToolTip"));
+            this.UseWaitCursor = true;
             this.Load += new System.EventHandler(this.HourUserControl_Load);
             this.ResumeLayout(false);
 

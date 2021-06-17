@@ -46,6 +46,8 @@ namespace PersonalClock
             this.siToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.siToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.noToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.iniciarConElSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
@@ -54,9 +56,10 @@ namespace PersonalClock
             this.siToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.noToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fijarTiempoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sonidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.siToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.noToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.siToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.noToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.RestCronometro = new System.Windows.Forms.Timer(this.components);
             this.AlarmIndicator = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.TVDateTime = new PersonalClock.Views.HourUserControl();
@@ -67,7 +70,6 @@ namespace PersonalClock
             // 
             // Form_elipse
             // 
-            this.Form_elipse.BorderRadius = 20;
             this.Form_elipse.TargetControl = this;
             // 
             // OpacityPanel
@@ -159,7 +161,8 @@ namespace PersonalClock
             this.toolStripSeparator1,
             this.iniciarConElSistemaToolStripMenuItem,
             this.toolStripMenuItem4,
-            this.avisoDeEjericioToolStripMenuItem});
+            this.avisoDeEjericioToolStripMenuItem,
+            this.sonidoToolStripMenuItem});
             this.configuracionesToolStripMenuItem.Name = "configuracionesToolStripMenuItem";
             this.configuracionesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.configuracionesToolStripMenuItem.Text = "Configuraciones";
@@ -202,6 +205,20 @@ namespace PersonalClock
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(242, 22);
             this.toolStripMenuItem3.Text = "Ocultar icono en barra de tareas";
+            // 
+            // siToolStripMenuItem2
+            // 
+            this.siToolStripMenuItem2.Name = "siToolStripMenuItem2";
+            this.siToolStripMenuItem2.Size = new System.Drawing.Size(90, 22);
+            this.siToolStripMenuItem2.Text = "Si";
+            this.siToolStripMenuItem2.Click += new System.EventHandler(this.siToolStripMenuItem2_Click);
+            // 
+            // noToolStripMenuItem2
+            // 
+            this.noToolStripMenuItem2.Name = "noToolStripMenuItem2";
+            this.noToolStripMenuItem2.Size = new System.Drawing.Size(90, 22);
+            this.noToolStripMenuItem2.Text = "No";
+            this.noToolStripMenuItem2.Click += new System.EventHandler(this.noToolStripMenuItem2_Click);
             // 
             // toolStripSeparator1
             // 
@@ -259,26 +276,33 @@ namespace PersonalClock
             this.fijarTiempoToolStripMenuItem.Text = "Fijar tiempo";
             this.fijarTiempoToolStripMenuItem.Click += new System.EventHandler(this.fijarTiempoToolStripMenuItem_Click);
             // 
+            // sonidoToolStripMenuItem
+            // 
+            this.sonidoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.siToolStripMenuItem3,
+            this.noToolStripMenuItem3});
+            this.sonidoToolStripMenuItem.Name = "sonidoToolStripMenuItem";
+            this.sonidoToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.sonidoToolStripMenuItem.Text = "Sonido";
+            // 
+            // siToolStripMenuItem3
+            // 
+            this.siToolStripMenuItem3.Name = "siToolStripMenuItem3";
+            this.siToolStripMenuItem3.Size = new System.Drawing.Size(90, 22);
+            this.siToolStripMenuItem3.Text = "Si";
+            // 
+            // noToolStripMenuItem3
+            // 
+            this.noToolStripMenuItem3.Name = "noToolStripMenuItem3";
+            this.noToolStripMenuItem3.Size = new System.Drawing.Size(90, 22);
+            this.noToolStripMenuItem3.Text = "No";
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
-            // siToolStripMenuItem2
-            // 
-            this.siToolStripMenuItem2.Name = "siToolStripMenuItem2";
-            this.siToolStripMenuItem2.Size = new System.Drawing.Size(90, 22);
-            this.siToolStripMenuItem2.Text = "Si";
-            this.siToolStripMenuItem2.Click += new System.EventHandler(this.siToolStripMenuItem2_Click);
-            // 
-            // noToolStripMenuItem2
-            // 
-            this.noToolStripMenuItem2.Name = "noToolStripMenuItem2";
-            this.noToolStripMenuItem2.Size = new System.Drawing.Size(90, 22);
-            this.noToolStripMenuItem2.Text = "No";
-            this.noToolStripMenuItem2.Click += new System.EventHandler(this.noToolStripMenuItem2_Click);
             // 
             // RestCronometro
             // 
@@ -328,6 +352,7 @@ namespace PersonalClock
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Index";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Index_FormClosing);
             this.OpacityPanel.ResumeLayout(false);
             this.OpacityPanel.PerformLayout();
             this.MenuContext.ResumeLayout(false);
@@ -366,6 +391,9 @@ namespace PersonalClock
         private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem2;
         private Guna.UI2.WinForms.Guna2CirclePictureBox AlarmIndicator;
         private System.Windows.Forms.Timer RestCronometro;
+        private System.Windows.Forms.ToolStripMenuItem sonidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem siToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem3;
     }
 }
 
