@@ -34,8 +34,6 @@ namespace PersonalClock.Views
             this.HourLabel = new System.Windows.Forms.Label();
             this.HourTimer = new System.Windows.Forms.Timer(this.components);
             this.DateLabel = new System.Windows.Forms.Label();
-            this.DetailDotLabel1 = new System.Windows.Forms.Label();
-            this.DetailDotLabel2 = new System.Windows.Forms.Label();
             this.DetailDotAnim = new System.Windows.Forms.Timer(this.components);
             this.Form_drag = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Form_drag2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
@@ -46,6 +44,7 @@ namespace PersonalClock.Views
             // HourLabel
             // 
             resources.ApplyResources(this.HourLabel, "HourLabel");
+            this.HourLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HourLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.HourLabel.Name = "HourLabel";
             this.TooltipConfig.SetToolTip(this.HourLabel, resources.GetString("HourLabel.ToolTip"));
@@ -64,20 +63,7 @@ namespace PersonalClock.Views
             this.DateLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.DateLabel.Name = "DateLabel";
             this.TooltipConfig.SetToolTip(this.DateLabel, resources.GetString("DateLabel.ToolTip"));
-            // 
-            // DetailDotLabel1
-            // 
-            resources.ApplyResources(this.DetailDotLabel1, "DetailDotLabel1");
-            this.DetailDotLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DetailDotLabel1.Name = "DetailDotLabel1";
-            this.TooltipConfig.SetToolTip(this.DetailDotLabel1, resources.GetString("DetailDotLabel1.ToolTip"));
-            // 
-            // DetailDotLabel2
-            // 
-            resources.ApplyResources(this.DetailDotLabel2, "DetailDotLabel2");
-            this.DetailDotLabel2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.DetailDotLabel2.Name = "DetailDotLabel2";
-            this.TooltipConfig.SetToolTip(this.DetailDotLabel2, resources.GetString("DetailDotLabel2.ToolTip"));
+            this.DateLabel.UseWaitCursor = true;
             // 
             // DetailDotAnim
             // 
@@ -100,14 +86,13 @@ namespace PersonalClock.Views
             this.LoadingIndicador.Name = "LoadingIndicador";
             this.LoadingIndicador.ProgressColor = System.Drawing.Color.White;
             this.TooltipConfig.SetToolTip(this.LoadingIndicador, resources.GetString("LoadingIndicador.ToolTip"));
+            this.LoadingIndicador.UseWaitCursor = true;
             // 
             // HourUserControl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.Controls.Add(this.DetailDotLabel2);
-            this.Controls.Add(this.DetailDotLabel1);
             this.Controls.Add(this.LoadingIndicador);
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.HourLabel);
@@ -125,8 +110,6 @@ namespace PersonalClock.Views
         private System.Windows.Forms.Label HourLabel;
         private System.Windows.Forms.Timer HourTimer;
         private System.Windows.Forms.Label DateLabel;
-        private System.Windows.Forms.Label DetailDotLabel1;
-        private System.Windows.Forms.Label DetailDotLabel2;
         private System.Windows.Forms.Timer DetailDotAnim;
         private Guna.UI2.WinForms.Guna2DragControl Form_drag;
         private Guna.UI2.WinForms.Guna2DragControl Form_drag2;

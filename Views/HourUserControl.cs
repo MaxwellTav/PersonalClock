@@ -14,7 +14,6 @@ namespace PersonalClock.Views
     public partial class HourUserControl : UserControl
     {
         //Variables
-        private bool DotLabelBool = true;
         CultureInfo ci = new CultureInfo("Es-Es");
 
         #region Useless or Untouchable
@@ -25,7 +24,7 @@ namespace PersonalClock.Views
         private void HourTimer_Tick(object sender, EventArgs e)
         {
             //Hora, minutos, segundos, Meridiano
-            HourLabel.Text = System.DateTime.Now.ToString("hh  mm  ss  tt");
+            HourLabel.Text = System.DateTime.Now.ToString("hh:mm:ss - tt");
             //Dia
             DateLabel.Text = System.DateTime.Now.ToString("dd/");
             //Mes
@@ -45,18 +44,7 @@ namespace PersonalClock.Views
         private void DetailDotAnim_Tick(object sender, EventArgs e)
         {
             #region DotLabelAnim
-            if (DotLabelBool)
-            {
-                DotLabelBool = false;
-                DetailDotLabel1.Visible = DotLabelBool;
-                DetailDotLabel2.Visible = DotLabelBool;
-            }
-            else
-            {
-                DotLabelBool = true;
-                DetailDotLabel1.Visible = DotLabelBool;
-                DetailDotLabel2.Visible = DotLabelBool;
-            }
+            
             #endregion
         }
         #endregion

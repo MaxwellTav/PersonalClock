@@ -62,7 +62,10 @@ namespace PersonalClock
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RestCronometro = new System.Windows.Forms.Timer(this.components);
             this.AlarmIndicator = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.MoveTextBox = new System.Windows.Forms.TextBox();
             this.TVDateTime = new PersonalClock.Views.HourUserControl();
+            this.moverElFormularioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.elFormularioPuedesMoverloConLasTeclasDeDirecciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpacityPanel.SuspendLayout();
             this.MenuContext.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmIndicator)).BeginInit();
@@ -91,7 +94,7 @@ namespace PersonalClock
             this.ApplyButton.CustomImages.Parent = this.ApplyButton;
             this.ApplyButton.FillColor = System.Drawing.SystemColors.AppWorkspace;
             this.ApplyButton.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ApplyButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ApplyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ApplyButton.ForeColor = System.Drawing.Color.MidnightBlue;
             this.ApplyButton.HoverState.Parent = this.ApplyButton;
             this.ApplyButton.Location = new System.Drawing.Point(3, 75);
@@ -105,11 +108,11 @@ namespace PersonalClock
             // TitleLabel
             // 
             this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TitleLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.TitleLabel.Location = new System.Drawing.Point(135, 3);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(235, 32);
+            this.TitleLabel.Size = new System.Drawing.Size(228, 31);
             this.TitleLabel.TabIndex = 4;
             this.TitleLabel.Text = "Opacidad: 100%";
             // 
@@ -162,7 +165,8 @@ namespace PersonalClock
             this.iniciarConElSistemaToolStripMenuItem,
             this.toolStripMenuItem4,
             this.avisoDeEjericioToolStripMenuItem,
-            this.sonidoToolStripMenuItem});
+            this.sonidoToolStripMenuItem,
+            this.moverElFormularioToolStripMenuItem});
             this.configuracionesToolStripMenuItem.Name = "configuracionesToolStripMenuItem";
             this.configuracionesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.configuracionesToolStripMenuItem.Text = "Configuraciones";
@@ -283,19 +287,21 @@ namespace PersonalClock
             this.noToolStripMenuItem3});
             this.sonidoToolStripMenuItem.Name = "sonidoToolStripMenuItem";
             this.sonidoToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.sonidoToolStripMenuItem.Text = "Sonido";
+            this.sonidoToolStripMenuItem.Text = "Formulario transparente";
             // 
             // siToolStripMenuItem3
             // 
             this.siToolStripMenuItem3.Name = "siToolStripMenuItem3";
             this.siToolStripMenuItem3.Size = new System.Drawing.Size(90, 22);
             this.siToolStripMenuItem3.Text = "Si";
+            this.siToolStripMenuItem3.Click += new System.EventHandler(this.siToolStripMenuItem3_Click);
             // 
             // noToolStripMenuItem3
             // 
             this.noToolStripMenuItem3.Name = "noToolStripMenuItem3";
             this.noToolStripMenuItem3.Size = new System.Drawing.Size(90, 22);
             this.noToolStripMenuItem3.Text = "No";
+            this.noToolStripMenuItem3.Click += new System.EventHandler(this.noToolStripMenuItem3_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -314,7 +320,7 @@ namespace PersonalClock
             this.AlarmIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AlarmIndicator.BackgroundImage = global::PersonalClock.Properties.Resources.Alarm;
             this.AlarmIndicator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AlarmIndicator.Location = new System.Drawing.Point(6, 51);
+            this.AlarmIndicator.Location = new System.Drawing.Point(4, 57);
             this.AlarmIndicator.Name = "AlarmIndicator";
             this.AlarmIndicator.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.AlarmIndicator.ShadowDecoration.Parent = this.AlarmIndicator;
@@ -323,31 +329,56 @@ namespace PersonalClock
             this.AlarmIndicator.TabStop = false;
             this.AlarmIndicator.Visible = false;
             // 
+            // MoveTextBox
+            // 
+            this.MoveTextBox.Location = new System.Drawing.Point(-10, 0);
+            this.MoveTextBox.Name = "MoveTextBox";
+            this.MoveTextBox.Size = new System.Drawing.Size(10, 26);
+            this.MoveTextBox.TabIndex = 3;
+            this.MoveTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveTextBox_KeyDown_1);
+            // 
             // TVDateTime
             // 
             this.TVDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TVDateTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.TVDateTime.ContextMenuStrip = this.MenuContext;
-            this.TVDateTime.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TVDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TVDateTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.TVDateTime.Location = new System.Drawing.Point(3, 1);
+            this.TVDateTime.Location = new System.Drawing.Point(1, 1);
             this.TVDateTime.Margin = new System.Windows.Forms.Padding(19, 18, 19, 18);
             this.TVDateTime.Name = "TVDateTime";
             this.TVDateTime.Size = new System.Drawing.Size(263, 72);
             this.TVDateTime.TabIndex = 0;
             this.TVDateTime.Load += new System.EventHandler(this.TVDateTime_Load);
             // 
+            // moverElFormularioToolStripMenuItem
+            // 
+            this.moverElFormularioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.elFormularioPuedesMoverloConLasTeclasDeDirecciónToolStripMenuItem});
+            this.moverElFormularioToolStripMenuItem.Name = "moverElFormularioToolStripMenuItem";
+            this.moverElFormularioToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.moverElFormularioToolStripMenuItem.Text = "Mover el formulario";
+            // 
+            // elFormularioPuedesMoverloConLasTeclasDeDirecciónToolStripMenuItem
+            // 
+            this.elFormularioPuedesMoverloConLasTeclasDeDirecciónToolStripMenuItem.Enabled = false;
+            this.elFormularioPuedesMoverloConLasTeclasDeDirecciónToolStripMenuItem.Name = "elFormularioPuedesMoverloConLasTeclasDeDirecciónToolStripMenuItem";
+            this.elFormularioPuedesMoverloConLasTeclasDeDirecciónToolStripMenuItem.ShowShortcutKeys = false;
+            this.elFormularioPuedesMoverloConLasTeclasDeDirecciónToolStripMenuItem.Size = new System.Drawing.Size(364, 22);
+            this.elFormularioPuedesMoverloConLasTeclasDeDirecciónToolStripMenuItem.Text = "El formulario puedes moverlo con las teclas de dirección";
+            // 
             // Index
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(266, 76);
             this.Controls.Add(this.AlarmIndicator);
-            this.Controls.Add(this.OpacityPanel);
             this.Controls.Add(this.TVDateTime);
-            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Controls.Add(this.OpacityPanel);
+            this.Controls.Add(this.MoveTextBox);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -358,6 +389,7 @@ namespace PersonalClock
             this.MenuContext.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AlarmIndicator)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -378,7 +410,6 @@ namespace PersonalClock
         private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iniciarConElSistemaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private Views.HourUserControl TVDateTime;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem avisoDeEjericioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem activaciónToolStripMenuItem;
@@ -394,6 +425,10 @@ namespace PersonalClock
         private System.Windows.Forms.ToolStripMenuItem sonidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem siToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem3;
+        private Views.HourUserControl TVDateTime;
+        private System.Windows.Forms.TextBox MoveTextBox;
+        private System.Windows.Forms.ToolStripMenuItem moverElFormularioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem elFormularioPuedesMoverloConLasTeclasDeDirecciónToolStripMenuItem;
     }
 }
 

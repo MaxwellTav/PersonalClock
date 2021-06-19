@@ -16,6 +16,7 @@ namespace PersonalClock
         private double FormOpacity = 1;
         private bool showInTaskBar = false;
         private bool showTop;
+        private bool transparentForm;
 
         private Point FormLocation;
 
@@ -32,11 +33,13 @@ namespace PersonalClock
 
         private void SaveConfig()
         {
+            //poniendo la igualdad antes de guardar
             FormLocation = Location;
             FormOpacity = Opacity;
             showInTaskBar = ShowInTaskbar;
             showTop = TopMost;
 
+            //guardando
             try
             {
                 //opacity, always, showtop
@@ -44,6 +47,7 @@ namespace PersonalClock
                 Properties.Settings.Default["Opacidad"] = Opacity;
                 Properties.Settings.Default["ShowInTop"] = showInTaskBar;
                 Properties.Settings.Default["ReallyShowTop"] = showTop;
+                Properties.Settings.Default["UseTransparentForm"] = transparentForm;
 
                 Properties.Settings.Default.Save();
             }
@@ -65,6 +69,16 @@ namespace PersonalClock
             ShowInTaskbar = Properties.Settings.Default.ShowInTop;
             TopMost = Properties.Settings.Default.ReallyShowTop;
             
+            switch (Properties.Settings.Default.UseTransparentForm)
+            {
+                case true:
+                    TransparencyKey = Color.FromArgb(48, 48, 48);
+                    break;
+                case false:
+                    TransparencyKey = Color.Transparent;
+                    break;
+            }
+
             //Bug de la barra de Opacidad
             //OpacityValue.Value = (int)(Opacity * 100);
             TitleLabel.Text = "Opacidad: " + OpacityValue.Value + "%";
@@ -235,6 +249,48 @@ namespace PersonalClock
 
         private void noToolStripMenuItem2_Click(object sender, EventArgs e)
         { ShowInTaskbar = true; }
+        #endregion
+
+        #region Formulario transparente
+        private void siToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            TransparencyKey = Color.FromArgb(48, 48, 48);
+            transparentForm = true;
+        }
+
+        private void noToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            TransparencyKey = Color.Transparent;
+            transparentForm = false;
+        }
+        #endregion
+
+        #region Mover el formulario con las teclas
+        private void MoveTextBox_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                //↑
+                case Keys.Up:
+                    Location = new Point(Location.X, Location.Y - 1);
+                    break;
+
+                //↓
+                case Keys.Down:
+                    Location = new Point(Location.X, Location.Y + 1);
+                    break;
+
+                //←
+                case Keys.Left:
+                    Location = new Point(Location.X - 1, Location.Y);
+                    break;
+
+                //→
+                case Keys.Right:
+                    Location = new Point(Location.X + 1, Location.Y);
+                    break;
+            }
+        }
         #endregion
 
         private void Index_FormClosing(object sender, FormClosingEventArgs e)

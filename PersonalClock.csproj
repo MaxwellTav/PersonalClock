@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\moveCursor.png" />
     <None Include="Resources\Alarm.png" />
   </ItemGroup>
   <ItemGroup>

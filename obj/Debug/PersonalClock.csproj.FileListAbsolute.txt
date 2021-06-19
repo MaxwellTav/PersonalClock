@@ -1,8 +1,6 @@
 C:\Users\maxwe\source\repos\PersonalClock\bin\Debug\PersonalClock.exe.config
 C:\Users\maxwe\source\repos\PersonalClock\bin\Debug\PersonalClock.exe
 C:\Users\maxwe\source\repos\PersonalClock\bin\Debug\PersonalClock.pdb
-C:\Users\maxwe\source\repos\PersonalClock\bin\Debug\Guna.UI2.dll
-C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.csprojAssemblyReference.cache
 C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.Index.resources
 C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.Properties.Resources.resources
 C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.csproj.GenerateResource.cache
@@ -14,3 +12,4 @@ C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.Views.HourUser
 C:\Users\maxwe\source\repos\PersonalClock\bin\Debug\es-DO\PersonalClock.resources.dll
 C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.Views.HourUserControl.es-DO.resources
 C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\es-DO\PersonalClock.resources.dll
+C:\Users\maxwe\source\repos\PersonalClock\obj\Debug\PersonalClock.csproj.AssemblyReference.cache
